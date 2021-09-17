@@ -220,12 +220,6 @@ then
       --outputpath ${OUTPUTDIR}/ \
       --nzformat .asc \
       >> ${OUTPUTDIR}/construct_dr4_goldclasses.log
-    ${P_RSCRIPT} get_SOM_cellcounts.R \
-      ${OUTPUTDIR}/${SOMFILE} \
-      ${OUTPUTDIR}/${SPECCAT_ALL_ADAPT//.fits/_allgoldclass.fits}
-    ${P_RSCRIPT} get_SOM_cellcounts.R \
-      ${OUTPUTDIR}/${SOMFILE} \
-      ${OUTPUTDIR}/${PHOTCAT_ALL_DCOL//.cat/_allgoldclass.fits}
   else 
     echo "Gold Catalogues Already Exists! Skipping!" 
     echo "(${OUTPUTDIR}/${PHOTCAT_ALL_DCOL//.cat/_allgoldclass.fits})"
