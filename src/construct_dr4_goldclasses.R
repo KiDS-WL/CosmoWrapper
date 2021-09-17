@@ -60,23 +60,13 @@ tomo.lim<-c(0.1,0.3,0.5,0.7,0.9,1.2)
 nz.format<-'.fits'
 #/*fend*/}}}
 
-##Define the various SOM GoldClass sets /*fold*/{{{
-#class.sets<-rbind(c("Fid",          "phot$SurveyGoldFlag>=0",         "spec$z_Flag>0"      ),
-#                  c("noVVDS",       "!phot$SurveyGoldFlag%in%c(0,16)","spec$SurveyFlag!=16"),
-#                  c("nozCOSMOS",    "!phot$SurveyGoldFlag%in%c(0,2)", "spec$SurveyFlag!=2" ),
-#                  c("noDEEP2",      "!phot$SurveyGoldFlag%in%c(0,4)", "spec$SurveyFlag!=4" ),
-#                  c("speczquality4","phot$RedshiftGoldClass>=2",      "spec$z_Flag>=4"     ),
-#                  c("multispec3",   "phot$SurveyGoldClass>=3",        "spec$z_Flag>0"      ))
-##/*fend*/}}}
-#Define the JLvdB SOM GoldClass sets /*fold*/{{{
-class.sets<-rbind(c("nQ4",            "phot$RedshiftGoldClass>=0",  "spec$z_Flag>=4",                     "Zbest"),
-                  c("Fid",            "phot$RedshiftGoldClass>=0",  "spec$z_Flag>=3",                     "Zbest"),
-                  c("plusPAUS",       "phot$RedshiftGoldClass>=0",  "spec$z_Flag>=2",                     "Zbest"),
-                  c("plusPAUSCOS15",  "phot$RedshiftGoldClass>=0",  "spec$z_Flag>=1",                     "Zbest"),
-                  c("onlyPAUS",       "phot$RedshiftGoldClass>=0",  "bitwAnd(spec$Zsource,2L)==2L",       "Zpaus"),
-                  c("onlyCOS15",      "phot$RedshiftGoldClass>=0",  "bitwAnd(spec$Zsource,4L)==4L",       "Zcos15"),
-                  c("onlyPAUSCOS15",  "phot$RedshiftGoldClass>=0",  "spec$Zsource>1",                     "ZbestPhot"),
-                  c("Fid_noDEVILS",   "phot$RedshiftGoldClass>=0",  "(spec$z_Flag>=3)&(spec$source!=10)", "Zbest"))
+#Define the COSMOS2020 SOM GoldClass sets /*fold*/{{{
+class.sets<-rbind(
+  c("laigle",     "phot$RedshiftGoldClass>=0", "bitwAnd(spec$Zsource,bitwShiftL(1,2))>0", "Zbest_laigle"),
+  c("eazy_class", "phot$RedshiftGoldClass>=0", "bitwAnd(spec$Zsource,bitwShiftL(1,3))>0", "Zbest_eazy_class"),
+  c("leph_class", "phot$RedshiftGoldClass>=0", "bitwAnd(spec$Zsource,bitwShiftL(1,4))>0", "Zbest_leph_class"),
+  c("eazy_farm",  "phot$RedshiftGoldClass>=0", "bitwAnd(spec$Zsource,bitwShiftL(1,5))>0", "Zbest_eazy_farm"),
+  c("leph_farm",  "phot$RedshiftGoldClass>=0", "bitwAnd(spec$Zsource,bitwShiftL(1,6))>0", "Zbest_leph_farm"))
 #/*fend*/}}}
 
 #Define the datasets /*fold*/{{{
